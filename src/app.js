@@ -1,8 +1,9 @@
  /**
  * Application module
  */
+var moment = require('moment');
 // Main application module
-var App = angular.module('App', ['lumx', 'ngRoute']);
+var App = angular.module('App', ['lumx', 'ngRoute', 'highcharts-ng']);
 // API url
 var apiUrl = 'http://localhost:3000';
 
@@ -10,9 +11,10 @@ var apiUrl = 'http://localhost:3000';
      client: 'mysql',
      connection: {
          host     : 'hdc101.selfip.net',
-         user     : 'nut101',
-         password : 'nut101',
-         database : 'nemo'
+         user     : 'root',
+         password : 'Hos1106411064',
+         database : 'nemocare',
+         charset: 'utf8'
      }
  });
 
@@ -32,6 +34,10 @@ App.config(function ($routeProvider) {
         .when('/death', {
             templateUrl: 'partials/Death.html',
             controller: 'DeathController'
+        })
+        .when('/death/:hospcode', {
+            templateUrl: 'partials/DeathDetail.html',
+            controller: 'DetailController'
         })
         .otherwise({ redirectTo: '/' });
 });

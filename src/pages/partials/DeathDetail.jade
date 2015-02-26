@@ -1,0 +1,23 @@
+
+.data-table-container
+    table.data-table.data-table--has-secondary
+        thead
+            tr
+                th #
+                th ชื่อ - สกุล
+                th CID
+                th เพศ
+                th วันเกิด
+                th วันที่เสียชีวิต
+            tr
+                td(colspan="6").divider.divider--dark
+
+        tbody
+            tr.data-table__clickable-row(ng-repeat="p in person")
+                td {{ $index+1 }}
+                td {{ p.pname }} {{ p.fname }} {{ p.lname }}
+                td {{ p.cid }}
+                td {{ p.sex | sexName }}
+                td {{ p.birth | toThaiDate }}
+                td {{ p.doctor_finish_time | toThaiDate }}
+

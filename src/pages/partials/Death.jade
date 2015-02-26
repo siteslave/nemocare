@@ -1,3 +1,71 @@
+.card
+    div(class="p+")
+        highchart(config="chartsConfig")
+
+.data-table-container
+    table.data-table.data-table--has-secondary
+        thead
+            tr
+                th HOSPCODE
+                th ชื่อสถานบริการ
+                th จำนวน
+                th
+            tr
+                td(colspan="4").divider.divider--dark
+
+        tbody
+            tr.data-table__clickable-row(ng-repeat="h in hospitals")
+                td {{ h.hospcode }}
+                td {{ h.type }} {{ h.name }}
+                td {{ h.total }}
+                td
+                    lx-dropdown(position="right", from-top)
+                        button.btn.btn--l.btn--grey.btn--icon(lx-ripple, lx-dropdown-toggle)
+                            i.mdi.mdi-dots-vertical
+                        lx-dropdown-menu
+                            ul
+                                li
+                                    a(href="#/death/{{h.hospcode}}").dropdown-link
+                                        i.mdi.mdi-pencil
+                                        | ดูรายชื่อ
+                                li
+                                    a(ng-click="getService(h.hospcode)").dropdown-link
+                                        i.mdi.mdi-pencil
+                                        | ดูรายชื่อ (Web Service)
+
+lx-dialog.dialog.dialog--l#mdlDetail
+    .dialog__header
+        .toolbar.bgc-light-blue-500(class="pl++")
+            span.toolbar__label.tc-white.fs-title รายชื่อผู้เสียชีวิต
+            .toolbar_right
+                button.btn.btn--l.btn--white.btn--icon(lx-ripple)
+                    i.mdi.mdi-close
+
+    .dialog__content
+        div(class="p+")
+            .data-table-container
+                table.data-table.data-table--has-secondary
+                    thead
+                        tr
+                            th #
+                            th ชื่อ - สกุล
+                            th CID
+                            th เพศ
+                            th วันเกิด
+                            th วันที่เสียชีวิต
+                        tr
+                            td(colspan="6").divider.divider--dark
+
+                    tbody
+                        tr.data-table__clickable-row(ng-repeat="p in items")
+                            td {{ $index+1 }}
+                            td {{ p.pname }} {{ p.fname }} {{ p.lname }}
+                            td {{ p.cid }}
+                            td {{ p.sex }}
+                            td {{ p.birth | toThaiDate }}
+                            td {{ p.doctor_finish_time | toThaiDate }}
 
 
-| Death {{total | number}}
+
+    .dialog__actions
+        button.btn.btn--l.btn--red.btn--raised(lx-ripple, lx-dialog-close) ปิดหน้าต่าง

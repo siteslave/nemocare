@@ -13,6 +13,8 @@
   "dependencies": {
     "lumx": "~0.3.10",
     "angular-route": "~1.3.13",
-    "angular-i18n": "~1.3.13"
+    "angular-i18n": "~1.3.13",
+    "highcharts": "~4.1.1",
+    "highcharts-ng": "~0.0.8"
   }
 }
