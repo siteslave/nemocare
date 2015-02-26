@@ -33,10 +33,10 @@
     "gulp": "^3.8.10",
     "gulp-jade": "^0.10.0",
     "gulp-jshint": "^1.9.0",
-    "gulp-less": "^2.0.1",
     "gulp-watch": "^3.0.0"
   },
   "dependencies": {
+    "MD5": "^1.2.1",
     "jsonfile": "^2.0.0",
     "knex": "^0.7.3",
     "lodash": "^2.4.1",
