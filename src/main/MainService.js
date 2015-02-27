@@ -1,7 +1,9 @@
 /**
  * Main Service
  */
-App.factory('MainService', function ($q, $http) {
+App.factory('MainService', function ($q, $http, Common) {
+
+    var apiUrl = Common.getApiUrl();
 
     return {
 

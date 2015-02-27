@@ -1,1 +1,35 @@
-| Settings
+.fs-headline
+    i.icon.icon--l.icon--green.icon--circled.mdi.mdi-security-network
+    | &nbsp; กำหนดค่าการเชื่อมต่อ
+form(name="frmSetting")
+    div(flex-container="row", flex-gutter="24")
+        div(flex-item="6")
+            lx-text-field(label="Host address")
+                input(type="text", ng-model="config.db.host", ng-required="true")
+        div(flex-item="4")
+            lx-text-field(label="Database")
+                input(type="text", ng-model="config.db.database", ng-required="true")
+        div(flex-item="2")
+            lx-text-field(label="Port")
+                input(type="number", ng-model="config.db.port", ng-required="true")
+    div(flex-container="row", flex-gutter="24")
+        div(flex-item="6")
+            lx-text-field(label="Username")
+                input(type="text", ng-model="config.db.user", ng-required="true")
+
+        div(flex-item="6")
+            lx-text-field(label="Password")
+                input(type="password", ng-model="config.db.password", ng-required="true")
+
+    div(flex-container="row", flex-gutter="24")
+        div(flex-item="6")
+            lx-text-field(label="apiUrl")
+                input(type="text", ng-model="config.apiUrl", ng-required="true")
+        div(flex-item="6")
+            lx-text-field(label="key")
+                input(type="text", ng-model="config.key", ng-required="true")
+
+    br
+    button.btn.btn--l.btn--green.btn--raised(lx-ripple, ng-disabled="frmSetting.$invalid", ng-click="doSave()") บันทึก
+    | &nbsp;
+    a(href="#/").btn.btn--l.btn--grey.btn--raised(lx-ripple) กลับหน้าหลัก

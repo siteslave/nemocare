@@ -1,4 +1,8 @@
-App.factory('DeathService', function ($q, $http) {
+App.factory('DeathService', function ($q, $http, Common) {
+
+    // Get database connection
+    var knex = Common.getConnection();
+    var apiUrl = Common.getApiUrl();
 
     return {
 
@@ -21,10 +25,6 @@ App.factory('DeathService', function ($q, $http) {
             var  q = $q.defer();
 
             knex('accident')
-                //.select()
-                //.where()
-                //.orderBy()
-                //.groupBy()
                 .limit(10)
                 .exec(function (err, rows) {
                     if (err) q.reject(err);
