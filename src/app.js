@@ -39,20 +39,20 @@ App.config(function ($routeProvider) {
 
     // Configure routing
     $routeProvider
-        .when('/', { // http://localhost/index.php#/
-            templateUrl: 'partials/Main.html',
+        .when('/', {
+            templateUrl: '../main/Main.html',
             controller: 'MainController'
         })
         .when('/settings', {
-            templateUrl: 'partials/Settings.html',
+            templateUrl: '../settings/Settings.html',
             controller: 'SettingController'
         })
         .when('/death', {
-            templateUrl: 'partials/death/Death.html',
+            templateUrl: '../death/Death.html',
             controller: 'DeathController'
         })
         .when('/death/:hospcode', {
-            templateUrl: 'partials/death/DeathDetail.html',
+            templateUrl: '../death/DeathDetail.html',
             controller: 'DetailController'
         })
         .otherwise({ redirectTo: '/' });
@@ -84,4 +84,9 @@ win.on('minimize', function () {
     // hide window
     that.hide();
 
+});
+
+process.on('uncaughtException', function (e) {
+    console.log(e);
+    win.showDevTools();
 });

@@ -9,15 +9,17 @@ div(class="p+", ng-show="success")
     table.data-table.data-table--has-secondary
         thead
             tr
+                th #
                 th HOSPCODE
                 th ชื่อสถานบริการ
                 th จำนวน
                 th
             tr
-                td(colspan="4").divider.divider--dark
+                td(colspan="5").divider.divider--dark
 
         tbody
             tr.data-table__clickable-row(ng-repeat="h in hospitals")
+                td {{ $index + 1 }}
                 td {{ h.hospcode }}
                 td {{ h.type }} {{ h.name }}
                 td {{ h.total }}
