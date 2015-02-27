@@ -12,9 +12,9 @@
   "single-instance": true,
   "window": {
     "show": true,
-    "title": "My Application",
+    "title": "Nemo Care",
     "icon": "app/img/icon.png",
-    "toolbar": true,
+    "toolbar": false,
     "frame": true,
     "width": 1050,
     "height": 640,

@@ -48,12 +48,35 @@ App.config(function ($routeProvider) {
             controller: 'SettingController'
         })
         .when('/death', {
-            templateUrl: 'partials/Death.html',
+            templateUrl: 'partials/death/Death.html',
             controller: 'DeathController'
         })
         .when('/death/:hospcode', {
-            templateUrl: 'partials/DeathDetail.html',
+            templateUrl: 'partials/death/DeathDetail.html',
             controller: 'DetailController'
         })
         .otherwise({ redirectTo: '/' });
+});
+
+// When window is minimize
+win.on('minimize', function () {
+    var tray = new gui.Tray({title: 'Nemo'});
+    var menu = new gui.Menu();
+    var that = this;
+
+    menu.append(new gui.MenuItem({
+        type: 'normal',
+        label: 'เปิดหน้าต่าง',
+        icon: 'img/icon.png',
+        click: function () {
+            that.show();
+            tray.remove();
+            tray = null;
+        }
+    }));
+
+    tray.menu = menu;
+    // hide window
+    that.hide();
+
 });
