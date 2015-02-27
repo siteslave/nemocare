@@ -1,5 +1,5 @@
 
-App.controller('DeathController', function ($scope, DeathService, LxNotificationService, LxDialogService) {
+App.controller('DeathController', function ($scope, DeathService, LxNotificationService, LxDialogService, LxProgressService) {
 
     $scope.total = 0;
 
@@ -37,9 +37,9 @@ App.controller('DeathController', function ($scope, DeathService, LxNotification
             },
             tooltip: {
                 style: {
-                    padding: 10,
-                    fontWeight: 'bold'
-                }
+                    padding: 10
+                },
+                pointFormat: 'เสียชีวิต: <b>{point.y}</b> คน'
             }
         },
         series: [{
@@ -49,8 +49,14 @@ App.controller('DeathController', function ($scope, DeathService, LxNotification
         title: {
             text: 'ทะเบียนผู้เสียชีวิต'
         },
-        loading: false,
+        subtitle: {
+            text: 'Source: โปรแกรม Nemo'
+        },
+        legend: {
+            enabled: false
+        },
         xAxis: {
+            type: 'category',
             categories: [],
             labels: {
                 rotation: -45,
@@ -59,13 +65,18 @@ App.controller('DeathController', function ($scope, DeathService, LxNotification
                 }
             }
         },
-        //xAxis: {
-        //    currentMin: 0,
-        //    currentMax: 20,
-        //    title: {text: 'values'}
-        //},
+        yAxis: {
+            title: {
+                text: 'คน'
+            },
+            min: 0
+        },
         useHighStocks: false
     };
+
+    $scope.success = false; // Hide data
+    // Start progress bar
+    LxProgressService.linear.show('#5fa2db', '#progress');
 
     DeathService.total()
         .then(function (rows) {
@@ -75,7 +86,10 @@ App.controller('DeathController', function ($scope, DeathService, LxNotification
                 $scope.chartConfig.xAxis.categories.push(v.name);
                 $scope.chartConfig.series[0].data.push(v.total);
             });
-
+            // Hide progress
+            LxProgressService.linear.hide();
+            // Show data
+            $scope.success = true;
         }, function (err) {
             console.log(err);
             LxNotificationService.error('เกิดข้อผิดพลาดกรุณาดู Log');

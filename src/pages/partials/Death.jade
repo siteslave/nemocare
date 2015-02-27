@@ -1,8 +1,11 @@
-.card
-    div(class="p+")
-        highchart(config="chartConfig")
+div(flex-container="row", flex-gutter="24", ng-hide="success")
+    div(flex-item="12")
+        div#progress
 
-.data-table-container
+div(class="p+", ng-show="success")
+    highchart(config="chartConfig")
+
+.data-table-container(ng-show="success")
     table.data-table.data-table--has-secondary
         thead
             tr
