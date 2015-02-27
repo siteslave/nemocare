@@ -27,5 +27,5 @@ App.factory('Common', function ($q) {
         getAllSettings: function () {
             return config;
         }
-    }
+    };
 });
