@@ -16,3 +16,11 @@ App.filter('toThaiDate', function () {
     };
 
 });
+
+App.filter('sexName', function () {
+
+    return function (sex) {
+      return sex == '1' ? 'ชาย' : sex == '2' ? 'หญิง' : 'ไม่ทราบ';
+    };
+
+});
