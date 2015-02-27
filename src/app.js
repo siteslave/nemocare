@@ -1,7 +1,9 @@
  /**
  * Application module
- */
+ **/
 var moment = require('moment');
+var _ = require('lodash');
+
 // Main application module
 var App = angular.module('App', ['lumx', 'ngRoute', 'highcharts-ng']);
 // API url
