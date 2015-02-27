@@ -11,7 +11,7 @@
   "locale": "th_TH",
   "single-instance": true,
   "window": {
-    "show": true,
+    "show": false,
     "title": "Nemo Care",
     "icon": "app/img/icon.png",
     "toolbar": false,

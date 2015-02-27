@@ -58,6 +58,11 @@ App.config(function ($routeProvider) {
         .otherwise({ redirectTo: '/' });
 });
 
+//Show window when ready
+onload = function () {
+    win.show();
+};
+
 // When window is minimize
 win.on('minimize', function () {
     var tray = new gui.Tray({title: 'Nemo'});
